@@ -85,3 +85,7 @@ sublime-text vlc discord obs handbrake zoom betterzip avibrazil-rdm webpquickloo
 suspicious-package qlvideo spotify focus slack openaudible \
 docker another-redis-desktop-manager kid3 grammarly-desktop toggl-track \
 android-studio selfcontrol fig figma flipper android-file-transfer \
+
+
+git clone git@github.com:afoaad/dotfiles.git "${HOME}/dotfiles"
+ln -s "${HOME}/dotfiles/.zshrc" "${HOME}/.zshrc"
