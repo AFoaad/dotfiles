@@ -73,13 +73,23 @@ alias dont_index_node_modules='find . -type d -name "node_modules" -exec touch "
 alias check-nodemon="ps aux | rg -i '.bin/nodemon'";
 
 ## git aliases
-function gc { git commit -m "$@"; }
-alias gs="git status";
+alias ga='git add'
+alias gaa='git add .'
+alias gb='git branch'
+alias gc='git commit -m'
 alias gp="git pull";
-alias gf="git fetch";
 alias gpush="git push";
-alias gd="git diff";
-alias ga="git add .";
+alias gd='git diff'
+alias gf='git fetch'
+alias gm='git merge'
+alias gr='git rebase'
+alias gs='git status'
+alias gt='git tag'
+alias dt='git difftool'
+alias mt='git mergetool'
+alias cb='git branch --show-current'
+alias co='git checkout'
+alias sw='git switch'
 dif() { git diff --color --no-index "$1" "$2" | diff-so-fancy; }
 cdiff() { code --diff "$1" "$2"; }
 
@@ -110,4 +120,9 @@ alias ypm="echo \"Installing deps without lockfile and ignoring engines\" && yar
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
-source ~/.zshrc.private
+
+# Custom functions
+mg () { mkdir "$@" && cd "$@" || exit; }
+cdl() { cd "$@" && ll; }
+npm-latest() { npm info "$1" | grep latest; }
+killport() { lsof -i tcp:"$*" | awk 'NR!=1 {print $2}' | xargs kill -9 ;}
