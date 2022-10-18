@@ -14,40 +14,6 @@ function git_branch {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \(\1\)/';
 }
 
-function random_element {
-  declare -a array=("$@")
-  r=$((RANDOM % ${#array[@]}))
-  printf "%s\n" "${array[$r]}"
-}
-
-# Default Prompt
-setEmoji () {
-  EMOJI="$*"
-  DISPLAY_DIR='$(dirs)'
-  DISPLAY_BRANCH='$(git_branch)'
-  PROMPT="${YELLOW}${DISPLAY_DIR}${GREEN}${DISPLAY_BRANCH}${RESET} ${EMOJI}"$'\n'"$ ";
-}
-
-newRandomEmoji () {
-  setEmoji "$(random_element 😅 👽 🔥 🚀 👻 ⛄ 👾 🍔 😄 🍰 🐑 😎 🏎 🤖 😇 😼 💪 🦄 🥓 🌮 🎉 💯 ⚛️ 🐠 🐳 🐿 🥳 🤩 🤯 🤠 👨‍💻 🦸‍ 🧝‍ 🧞‍ 🧙‍ 👨‍🚀 👨‍🔬 🕺 🦁 🐶 🐵 🐻 🦊 🐙 🦎 🦖 🦕 🦍 🦈 🐊 🦂 🐍 🐢 🐘 🐉 🦚 ✨ ☄️ ⚡️ 💥 💫 🧬 🔮 ⚗️ 🎊 🔭 ⚪️ 🔱)"
-}
-
-newRandomEmoji
-
-alias jestify="PS1=\"🃏\"$'\n'\"$ \"";
-alias testinglibify="PS1=\"🐙\"$'\n'\"$ \"";
-alias cypressify="PS1=\"🌀\"$'\n'\"$ \"";
-alias staticify="PS1=\"🚀\"$'\n'\"$ \"";
-alias nodeify="PS1=\"💥\"$'\n'\"$ \"";
-alias reactify="PS1=\"⚛️\"$'\n'\"$ \"";
-alias harryify="PS1=\"🧙‍\"$'\n'\"$ \"";
-
-# ripgrep config
-RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
-
-# allow substitution in PS1
-setopt promptsubst
-
 # history size
 HISTSIZE=5000
 HISTFILESIZE=10000
@@ -82,18 +48,10 @@ export N_PREFIX="$HOME/n"; [[ :$PATH: == *"$N_PREFIX/bin"* ]] || PATH="$N_PREFIX
 # script kit
 PATH="$PATH:$HOME/.kenv/bin:$HOME/.kit/bin";
 
-# fly manual install
-PATH="$HOME/.fly/bin:$PATH";
-
-# CDPATH ALTERATIONS
-CDPATH=.:$HOME:$HOME/code:$HOME/code/epic-react:$HOME/code/testingjavascript:$HOME/Desktop
-
-# disable https://scarf.sh/
-SCARF_ANALYTICS=false
 
 # Custom Aliases
 alias code="\"/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code\""
-function c { code ${@:-.} }
+
 alias ll="ls -1a";
 alias ..="cd ../";
 alias ..l="cd ../ && ll";
@@ -106,11 +64,8 @@ alias d="cd ~/code";
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 alias deleteDSFiles="find . -name '.DS_Store' -type f -delete"
-alias kcd-oss="npx -p yo -p generator-kcd-oss -c 'yo kcd-oss'";
-function rmx {
-  cp -R ~/.rmx "$@";
-  cd "$@";
-}
+
+
 alias npm-update="npx npm-check-updates --dep prod,dev --upgrade";
 alias yarn-update="yarn upgrade-interactive --latest";
 alias flushdns="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder"
