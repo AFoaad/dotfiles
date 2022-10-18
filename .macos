@@ -53,7 +53,7 @@ echo "brew installing stuff"
 # switchaudio-osx: allows me to switch the audio device via the command line
 # pgcli: postgres CLI
 brew install git imagemagick watchman tree bat \
-git-delta switchaudio-osx pgcli
+git-delta switchaudio-osx pgcli ruby cocoapods
 
 echo "installing node (via n-install)"
 curl -L https://git.io/n-install | bash
@@ -85,5 +85,3 @@ sublime-text vlc discord obs handbrake zoom betterzip avibrazil-rdm webpquickloo
 suspicious-package qlvideo spotify focus slack openaudible \
 docker another-redis-desktop-manager kid3 grammarly-desktop toggl-track \
 android-studio selfcontrol fig figma flipper android-file-transfer \
-
-
