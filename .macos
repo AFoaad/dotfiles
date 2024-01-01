@@ -80,7 +80,7 @@ echo "installing NVM"
 # avibrazil-rdm: MacBook Pro Retina's highest and unsupported resolutions
 # webpquicklook: webp quick look
 echo "installing apps with brew --cask"
-brew install --cask google-chrome firefox bettertouchtool \
+brew install --cask google-chrome firefox bettertouchtool arc \
 bartender itsycal visual-studio-code dash hazeover screenflow whatsapp \
 sublime-text vlc discord obs handbrake zoom betterzip avibrazil-rdm webpquicklook \
 suspicious-package qlvideo spotify focus openaudible warp \
